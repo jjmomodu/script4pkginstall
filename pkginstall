@@ -7,8 +7,8 @@
 ####################################################################################################################################                            
 
 PKGS_CHECK="update"
-			for i in $PKGS_CHECK; do
-				yum check-update $i
+				for i in $PKGS_CHECK; do
+					yum check-update $i
 done
 
 		UPDATE_PKGS="yumupdate"
@@ -22,13 +22,13 @@ done
 done
 
 		PUSH_PKGS="java-1.8.0"
-			for i in $PUSH_PKGS; do
-				yum -y install java-1.8.0 $i
+				for i in $PUSH_PKGS; do
+					yum -y install java-1.8.0 $i
 done
 
 		REMOVE_PKGS="java-1.7.0-openjdk"
-			for i in $REMOVE_PKGS; do
-				yum -y remove java-1.7.0-openjdk $i
+				for i in $REMOVE_PKGS; do
+					yum -y remove java-1.7.0-openjdk $i
 
 done
 
@@ -85,29 +85,29 @@ done
 done
 
 		ADD_PORT="firewalld"
-			for i in $ADD_PORT; do
-				firewall-cmd --zone=public --add-port=80/tcp --permanent $i
+				for i in $ADD_PORT; do
+					firewall-cmd --zone=public --add-port=80/tcp --permanent $i
 done
 
 		SERVICE_PORT="firewalld"
-			for i in $SERVICE_PORT; do
-				firewall-cmd --zone=public --add-service=http --permanent $i
+				for i in $SERVICE_PORT; do
+					firewall-cmd --zone=public --add-service=http --permanent $i
 done
 
 
 		PORT_RELOAD="firewalld"
-			for i in $PORT_RELOAD; do
-				firewall-cmd --reload $i
+				for i in $PORT_RELOAD; do
+					firewall-cmd --reload $i
 done
 
 
 		APACHE_WEB="httptestingpage"
-			for i in $APACHE_WEB; do
-				echo "TESTING WEB PAGE from $(hostname -f)" > /var/www/html/index.html $i
+				for i in $APACHE_WEB; do
+					echo "TESTING WEB PAGE from $(hostname -f)" > /var/www/html/index.html $i
 done
 
 
 		DOCKER_PKGS="dockertesting"
-			for i in $DOCKER_PKGS; do
-				docker run docker/whalesay cowsay Jamiu Momodu! $i
+				for i in $DOCKER_PKGS; do
+					docker run docker/whalesay cowsay Jamiu Momodu! $i
 done
