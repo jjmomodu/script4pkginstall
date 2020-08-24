@@ -1,0 +1,113 @@
+#!/bin/bash
+
+#################################################################################################################################### 
+#######################                                                                                         #################### 
+#######################  THIS SCRIPT WILL UPDATE NEW PACKAGES, INSTALL,STATR AND ENABLE WEB SERVER APPLICATION  ####################
+#######################                                                                                         #################### 
+####################################################################################################################################                            
+
+PKGS_CHECK="update"
+			for i in $PKGS_CHECK; do
+				yum check-update $i
+done
+
+		UPDATE_PKGS="yumupdate"
+				for i in $UPDATE_PKGS; do
+					yum update -y $i
+done
+
+		PUSH_PKGS="httpd"
+				for i in $PUSH_PKGS; do
+					yum -y install $i
+done
+
+		PUSH_PKGS="java-1.8.0"
+			for i in $PUSH_PKGS; do
+				yum -y install java-1.8.0 $i
+done
+
+		REMOVE_PKGS="java-1.7.0-openjdk"
+			for i in $REMOVE_PKGS; do
+				yum -y remove java-1.7.0-openjdk $i
+
+done
+
+
+		START_WEBAPP="httpd"
+				for i in $START_WEBAPP; do
+					systemctl start httpd $i
+done
+
+		ENABLE_WEBAPP="httpd"
+				for i in $ENABLE_WEBAPP; do
+					systemctl enable httpd $i
+done
+
+		PUSH_PKGS="nginx1.12"
+				for i in $PUSH_PKGS; do
+					yum -y install $i
+done
+
+		START_WEBAPP="nginx1.12"
+				for i in $START_WEBAPP; do
+					systemctl start nginx $i
+done
+
+		ENABLE_WEBAPP="nginx1.12"
+				for i in $ENABLE_WEBAPP; do
+					systemctl enable nginx $i
+done
+
+		PUSH_PKGS="docker"
+				for i in $PUSH_PKGS; do
+					yum -y install $i
+done
+
+		START_WEBAPP="docker"
+				for i in $START_WEBAPP; do
+					systemctl start docker $i
+done
+
+		ENABLE_WEBAPP="docker"
+				for i in $ENABLE_WEBAPP; do
+					systemctl enable docker $i
+done
+
+		PUSH_PKGS="firewalld"
+				for i in $PUSH_PKGS; do
+					yum -y install firewalld $i
+done
+
+
+		PKGS_START="firewalld"
+				for i in $PKGS_START; do
+					systemctl start firewalld $i
+done
+
+		ADD_PORT="firewalld"
+			for i in $ADD_PORT; do
+				firewall-cmd --zone=public --add-port=80/tcp --permanent $i
+done
+
+		SERVICE_PORT="firewalld"
+			for i in $SERVICE_PORT; do
+				firewall-cmd --zone=public --add-service=http --permanent $i
+done
+
+
+		PORT_RELOAD="firewalld"
+			for i in $PORT_RELOAD; do
+				firewall-cmd --reload $i
+done
+
+
+		APACHE_WEB="httptestingpage"
+			for i in $APACHE_WEB; do
+				echo "TESTING WEB PAGE from $(hostname -f)" > /var/www/html/index.html $i
+done
+
+
+		DOCKER_PKGS="dockertesting"
+			for i in $DOCKER_PKGS; do
+				docker run docker/whalesay cowsay Jamiu Momodu! $i
+done
