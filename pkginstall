@@ -32,7 +32,6 @@ done
 
 done
 
-
 		START_WEBAPP="httpd"
 				for i in $START_WEBAPP; do
 					systemctl start httpd $i
@@ -78,7 +77,6 @@ done
 					yum -y install firewalld $i
 done
 
-
 		PKGS_START="firewalld"
 				for i in $PKGS_START; do
 					systemctl start firewalld $i
@@ -109,5 +107,5 @@ done
 
 		DOCKER_PKGS="dockertesting"
 				for i in $DOCKER_PKGS; do
-					docker run docker/whalesay cowsay Jamiu Momodu! $i
+					docker run docker/whalesay cowsay Docker Completed! $i
 done
